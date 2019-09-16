@@ -22,8 +22,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String patientStatus = "F,H,D,T,D,D,T,F,D,X,X,T,F,F,H,T,F,F,T";
-        String medicine = "As,P";
+        // @todo a more complex args verification with regex should be developed
+        if (args.length == 0 || args.length == 1) {
+            System.out.println("The patient states and medicines must be provided as arguments!");
+            return;
+        }
+
+        String patientStatus = args[0];
+        String medicine = args[1];
 
         InputParser inputArgs = new InputParser(patientStatus, medicine);
         List<PatientState> patientStates = inputArgs.listOfPatientStates();
