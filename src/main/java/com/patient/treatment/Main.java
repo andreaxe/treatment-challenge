@@ -22,16 +22,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // @todo a more complex args verification with regex should be developed
+        // @todo a more complex args verification with regex must be developed
         if (args.length == 0 || args.length == 1) {
             System.out.println("The patient states and medicines must be provided as arguments!");
             return;
         }
 
-        String patientStatus = args[0];
-        String medicine = args[1];
-
-        InputParser inputArgs = new InputParser(patientStatus, medicine);
+        InputParser inputArgs = new InputParser(args[0], args[1]);
         List<PatientState> patientStates = inputArgs.listOfPatientStates();
         List<Medicine> medicineProvided = inputArgs.listOfMedicineProvided();
 

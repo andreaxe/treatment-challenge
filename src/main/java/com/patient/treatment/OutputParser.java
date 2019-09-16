@@ -16,17 +16,17 @@ public class OutputParser {
         return outputPatientState.getOrDefault(patientState, 0);
     }
 
-    private void setPatientStateToOutput(){
-        for (PatientState key :PatientState.patientStateHashMap().values()) {
-            if(!outputPatientState.containsKey(key)){
-                outputPatientState.put(key, 0);
+    private void setMissingStatesToOutput(){
+        for (PatientState patientState : PatientState.patientStateHashMap().values()) {
+            if(!outputPatientState.containsKey(patientState)){
+                outputPatientState.put(patientState, 0);
             }
         }
     }
 
     @Override
     public String toString() {
-        setPatientStateToOutput();
+        setMissingStatesToOutput();
         return outputPatientState.keySet().stream()
                 .map(key -> key.getValue() + ":" + outputPatientState.get(key))
                 .collect(Collectors.joining(","));
