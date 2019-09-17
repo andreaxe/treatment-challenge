@@ -30,9 +30,11 @@ public class CheckDeadlyCombination implements TreatmentChain {
         if(checkForAspirinMixedWithParacetamol(medicine, output)){
             return;
         }
-        nextInChain.checkForTreatment(patientState, medicine, output);
+        if(nextInChain != null){
+            nextInChain.checkForTreatment(patientState, medicine, output);
+        }
     }
-    public void setNextChain(TreatmentChain nextChain){
+    public void setNextInChain(TreatmentChain nextChain){
         this.nextInChain = nextChain;
     }
 }

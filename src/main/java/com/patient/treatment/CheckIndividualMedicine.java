@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class CheckIndividualMedicine implements TreatmentChain{
 
-    private TreatmentChain nextChain;
+    private TreatmentChain nextInChain;
     private static final double CHANCES_SPAGHETTI_MONSTER = 1.0/1000000;
 
     private boolean checkForSpaghettiMonster(PatientState patientState,OutputParser output){
@@ -79,17 +79,14 @@ public class CheckIndividualMedicine implements TreatmentChain{
                 return;
             }
         }
-
         // If no treatment was administered update the initial patient state
         output.updatePatientState(patientState);
 
-        // in case you add other class to the chain that will be processed after this one
-        if(nextChain != null){
-            nextChain.checkForTreatment(patientState, medicine, output);
+        if(nextInChain != null){
+            nextInChain.checkForTreatment(patientState, medicine, output);
         }
-
     }
-    public void setNextChain(TreatmentChain nextChain){
-        this.nextChain = nextChain;
+    public void setNextInChain(TreatmentChain nextInChain){
+        this.nextInChain = nextInChain;
     }
 }

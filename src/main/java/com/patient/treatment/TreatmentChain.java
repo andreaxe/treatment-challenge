@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface TreatmentChain {
 
-    void setNextChain(TreatmentChain nextChain);
+    void setNextInChain(TreatmentChain nextInChain);
     void checkForTreatment(PatientState patientState, List<Medicine> medicine, OutputParser output);
 }

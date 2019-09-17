@@ -4,10 +4,10 @@ import java.util.List;
 
 public class CheckMedicineCombination implements TreatmentChain{
 
-    private TreatmentChain nextChain;
+    private TreatmentChain nextInChain;
 
-    public void setNextChain(TreatmentChain nextChain){
-        this.nextChain = nextChain;
+    public void setNextInChain(TreatmentChain nextChain){
+        this.nextInChain = nextChain;
     }
 
     private boolean CheckForInsulinMixedWithAntibiotic(PatientState patientState,
@@ -27,6 +27,8 @@ public class CheckMedicineCombination implements TreatmentChain{
         if(CheckForInsulinMixedWithAntibiotic(patientState, medicines, output)){
             return;
         }
-        this.nextChain.checkForTreatment(patientState, medicines, output);
+        if(nextInChain != null){
+            nextInChain.checkForTreatment(patientState, medicines, output);
+        }
     }
 }

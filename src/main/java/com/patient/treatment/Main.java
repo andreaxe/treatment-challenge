@@ -10,8 +10,8 @@ public class Main {
         CheckDeadlyCombination c1 = new CheckDeadlyCombination();
         CheckMedicineCombination c2 = new CheckMedicineCombination();
         CheckIndividualMedicine c3 = new CheckIndividualMedicine();
-        c1.setNextChain(c2);
-        c2.setNextChain(c3);
+        c1.setNextInChain(c2);
+        c2.setNextInChain(c3);
 
         for(PatientState patientState : patientStates){
             c1.checkForTreatment(patientState, medicines, output);
